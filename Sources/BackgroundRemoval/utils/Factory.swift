@@ -13,15 +13,8 @@ import VideoToolbox
 extension UIImage {
     /// resize image first to deal with the model constraints 320*320 images only
     func resizeImage(width: CGFloat, height: CGFloat) -> UIImage {
-
-        let scale = width / self.size.width
-        let heightScale = height / self.size.height
-
-        let newHeight = self.size.height * heightScale
-        let newWidth = self.size.width * scale
-
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
+        self.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
